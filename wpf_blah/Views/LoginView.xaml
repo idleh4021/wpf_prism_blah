@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="wpf_blah.Views.LoginView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:helpers ="clr-namespace:wpf_blah.Helpers"
+             prism:ViewModelLocator.AutoWireViewModel="True">
+    <Grid>
+        <!-- StackPanel을 중앙에 배치 -->
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBox Width="200" Margin="0,10" 
+                     Text="{Binding UserId, UpdateSourceTrigger=PropertyChanged}" />
+
+            <PasswordBox Width="200" Margin="0,10"
+                         helpers:PasswordBoxHelper.BoundPassword="{Binding Password, Mode=TwoWay}" />
+
+            <Button Content="Login"
+                    Width="100"
+                    Command="{Binding LoginCommand}" />
+        </StackPanel>
+    </Grid>
+</UserControl>

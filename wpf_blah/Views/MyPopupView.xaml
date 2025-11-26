@@ -1,0 +1,10 @@
+﻿<UserControl x:Class="wpf_blah.Views.MyPopupView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"             
+             prism:ViewModelLocator.AutoWireViewModel="True">
+    <StackPanel Margin="20">
+        <TextBlock Text="팝업 내용" />
+        <Button Content="닫기" Command="{Binding CloseCommand}" />
+    </StackPanel>
+</UserControl>
