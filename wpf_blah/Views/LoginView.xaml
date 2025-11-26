@@ -3,19 +3,90 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:prism="http://prismlibrary.com/"
              xmlns:helpers ="clr-namespace:wpf_blah.Helpers"
-             prism:ViewModelLocator.AutoWireViewModel="True">
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             Background="#F5F7FA">
     <Grid>
-        <!-- StackPanel을 중앙에 배치 -->
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBox Width="200" Margin="0,10" 
-                     Text="{Binding UserId, UpdateSourceTrigger=PropertyChanged}" />
+        <Border Width="350" Padding="40" CornerRadius="12"
+                Background="White"  
+                HorizontalAlignment="Center" VerticalAlignment="Center">
 
-            <PasswordBox Width="200" Margin="0,10"
-                         helpers:PasswordBoxHelper.BoundPassword="{Binding Password, Mode=TwoWay}" />
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="2" Direction="270" Color="Black" Opacity="0.2" BlurRadius="5"/>
+            </Border.Effect>
 
-            <Button Content="Login"
-                    Width="100"
-                    Command="{Binding LoginCommand}" />
-        </StackPanel>
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,30">
+                    <TextBlock Text="💬" FontSize="30" VerticalAlignment="Bottom" Margin="0,0,5,0"/>
+                    <TextBlock Text="Blah" FontSize="32" FontWeight="Bold" 
+                   Foreground="#007AFF" />
+                </StackPanel>
+
+                <TextBlock Text="USERNAME" 
+               FontSize="14" 
+               FontWeight="SemiBold" 
+               Foreground="#333333" 
+               Margin="0,0,0,5"/>
+
+                <TextBox Width="270" Height="40" Padding="10" 
+             Margin="0,0,0,8"
+             BorderThickness="1" BorderBrush="#DDDDDD" 
+             Text="{Binding UserId, UpdateSourceTrigger=PropertyChanged}">
+                    <TextBox.Style>
+                        <Style TargetType="TextBox">
+                            <Style.Triggers>
+                                <Trigger Property="IsFocused" Value="True">
+                                    <Setter Property="BorderBrush" Value="#007AFF"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                </TextBox>
+
+                <TextBlock Text="PASSWORD" 
+               FontSize="14" 
+               FontWeight="SemiBold" 
+               Foreground="#333333" 
+               Margin="0,15,0,5"/>
+
+                <PasswordBox Width="270" Height="40" Padding="10"
+                 Margin="0,0,0,8"
+                 BorderThickness="1" BorderBrush="#DDDDDD" 
+                 helpers:PasswordBoxHelper.BoundPassword="{Binding Password, Mode=TwoWay}">
+                    <PasswordBox.Style>
+                        <Style TargetType="PasswordBox">
+                            <Style.Triggers>
+                                <Trigger Property="IsFocused" Value="True">
+                                    <Setter Property="BorderBrush" Value="#007AFF"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </PasswordBox.Style>
+                </PasswordBox>
+                <Button Content="로그인" Width="270" Height="45" Margin="0,25,0,0"
+            Command="{Binding LoginCommand}"  
+            Background="#007AFF" Foreground="White" FontWeight="SemiBold"
+            BorderThickness="0" HorizontalAlignment="Center" Cursor="Hand">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}"  
+                                    CornerRadius="8">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#1A85FF"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </StackPanel>
+        </Border>
     </Grid>
 </UserControl>
